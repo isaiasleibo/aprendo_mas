@@ -1,0 +1,72 @@
+.mis-materias {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-width: calc(1000px - 42px);
+    width: calc(100% - 70px);
+    margin: 0 auto;
+    border: 1px solid #b3b3b3;
+    box-shadow: rgba(179, 179, 179, 0.459) 0px 7px 29px 0px;
+    margin-bottom: 40px;
+    margin-top: 100px;
+    height: fit-content;
+  
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  
+    .materia-card {
+      background-color: #eeeeee;
+      border-bottom: 1px solid #c9c9c9;
+      padding: 7px 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      border-left: 1px solid #b3b3b3;
+      border-right: 1px solid #b3b3b3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      &:hover {
+        background-color: #f0f8ff;
+      }
+  
+      .materia-info {
+        h3 {
+          font-size: 16px;
+          margin: 0;
+        }
+  
+        span {
+          font-size: 12px;
+          color: #888;
+          display: block;
+        }
+      }
+
+      svg {
+        height: 20px;
+
+        path {
+            fill: #383838;
+        }
+      }
+    }
+
+    .materia-card.primero {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-top: 1px solid #b3b3b3;
+    }
+
+    .materia-card.ultimo {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom: 1px solid #b3b3b3;
+    }
+  }

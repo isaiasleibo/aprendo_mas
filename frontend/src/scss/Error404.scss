@@ -1,0 +1,50 @@
+$error-color: #e74c3c;
+$background-color: #f7f7f7;
+$text-color: #2c3e50;
+$link-color: #3498db;
+
+.error-page-container {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.error-page {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    max-width: calc(1000px - 42px);
+    width: calc(100% - 70px);
+    height: fit-content;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    box-shadow: rgba(179, 179, 179, 0.459) 0px 7px 29px 0px;
+
+    h1 {
+        font-size: 100px;
+        color: #213555;
+        margin: 0;
+    }
+
+    #error-text {
+        font-size: 1.25rem;
+        color: #333333;
+        margin: 0.5rem 0 1.5rem;
+    }
+
+    .back-home {
+        font-size: 1rem;
+        color: #3498db;
+        text-decoration: none;
+        border: 1px solid #b3b3b3;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #dddddd;
+            color: #fff;
+        }
+    }
+}

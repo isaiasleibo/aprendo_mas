@@ -1,0 +1,74 @@
+@keyframes open-delete-comments-section-background {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+#delete-comment-section {
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    animation: 0.5s open-delete-comments-section-background ease;
+
+    #delete-container {
+        background-color: white;
+        width: fit-content;
+        border-radius: 10px;
+        border: 1px solid #b3b3b3;
+        max-width: 600px;
+        width: calc(100% - 30px);
+        animation: 0.5s open-comments-section ease;
+    }
+
+    #top-bar {
+        padding: 15px 20px;
+        border-bottom: 1px solid #b3b3b3;
+
+        p {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+
+    #main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-weight: 750;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #botones {
+            display: flex;
+            margin-top: 20px;
+
+            button {
+                padding: 0.3rem 0.8rem;
+                background-color: #eeeeee;
+                border: 1px solid #b3b3b3;
+                color: #333;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin: 0 10px;
+            }
+        }
+    }
+}

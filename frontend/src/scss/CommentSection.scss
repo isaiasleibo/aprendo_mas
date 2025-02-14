@@ -1,0 +1,173 @@
+@keyframes open-comments-section {
+    0% {
+        scale: 0.5;
+        opacity: 0.2;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes open-comments-section-background {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+#comment-section {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    animation: 0.5s open-comments-section-background ease;
+
+
+    .comments-container {
+        background-color: white;
+        width: fit-content;
+        border-radius: 10px;
+        border: 1px solid #b3b3b3;
+        max-width: 600px;
+        width: calc(100% - 30px);
+        animation: 0.5s open-comments-section ease;
+
+        &.comments-container-loading {
+            width: fit-content !important;
+            height: fit-content !important;
+            padding: 20px !important;
+        }
+
+        #top-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #b3b3b3;
+
+            p {
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            svg {
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+
+        #comments-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            padding-top: 40px;
+
+            svg {
+                max-width: 200px;
+            }
+
+            p {
+                font-size: 14px;
+                margin-top: 20px;
+                font-weight: 600;
+            }
+        }
+
+        #write-comment {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            textarea {
+                width: calc(100% - 20px);
+                border: 1px solid #b3b3b3;
+                outline: none;
+                padding: 10px;
+                border-radius: 10px;
+                height: 50px;
+                resize: none;
+            }
+
+            button {
+                margin-top: 15px;
+                padding: 6px 14px;
+                background-color: #eeeeee;
+                border: 1px solid #b3b3b3;
+                color: #333;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: fit-content;
+            }
+        }
+
+        #comments {
+            padding: 10px 20px;
+            padding-top: 30px;
+            max-height: 50vh;
+            overflow: auto;
+
+            .comment {
+                display: flex;
+                padding: 10px 0;
+
+                .content {
+                    padding: 10px;
+                    border-radius: 10px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    background-color: #f1f1f1;
+                    margin-left: 15px;
+                    display: flex;
+
+                    .delete-comment {
+                        width: 13px;
+                        height: fit-content;
+                        top: 0;
+                        cursor: pointer;
+
+                        path {
+                            fill: rgb(199, 0, 0);
+                        }
+                    }
+
+                    p {
+                        font-size: 14px;
+
+                        &.username {
+                            font-weight: 700;
+                        }
+
+                        &.date {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .avatar {
+                    width: fit-content;
+                    height: fit-content;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
