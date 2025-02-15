@@ -52,7 +52,7 @@ const Login = ({ setUser }) => {
                     !loading ? (
                         <>
                             <img src={require('../img/big-logo.webp')} alt="" />
-                            <h2 className="login-title">Iniciar Sesión</h2>
+                            <h2 className="login-title">Iniciar Sesiónnnn</h2>
                             <input
                                 type="text"
                                 id="document"
