@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const PublicationItem = ({ id, itemType, teacherName, profilePhoto, subjectName, courseName, content, datePublished, taskTitle, comment }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [maxLength, setMaxLength] = useState(getMaxLength(window.innerWidth));
@@ -54,7 +56,7 @@ const PublicationItem = ({ id, itemType, teacherName, profilePhoto, subjectName,
 
   const obtenerCantidadComentarios = async () => {
     try {
-      const response = await fetch('http://localhost:3000/count_comments', {
+      const response = await fetch(`${serverURL}/count_comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

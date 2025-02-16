@@ -5,6 +5,8 @@ import '../scss/Calendario.scss';
 import Loading from '../components/Loading'
 import { Link } from 'react-router-dom';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const Calendario = ({ id_curso, id_alumno }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [isSmallScreen, setIsSmallScreen] = useState(null);
@@ -24,7 +26,7 @@ const Calendario = ({ id_curso, id_alumno }) => {
       const lastDay = new Date(year, month + 1, 0).toISOString().split('T')[0]; // Último día del mes
 
       try {
-        const response = await fetch('http://localhost:3000/search_tasks_by_date', {
+        const response = await fetch(`${serverURL}/search_tasks_by_date`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

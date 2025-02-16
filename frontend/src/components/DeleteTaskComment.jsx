@@ -1,10 +1,12 @@
 import React from 'react'
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const DeleteTaskComment = ({id_alumno, id_comentario, setComment, getComments}) => {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch("http://localhost:3000/delete_comment", {
+            const response = await fetch(`${serverURL}/delete_comment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

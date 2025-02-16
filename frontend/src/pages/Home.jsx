@@ -8,6 +8,8 @@ import CommentSection from '../components/CommentSection';
 import Empty from '../components/Empty'
 import DeleteCommentSection from '../components/DeleteCommentSection';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const Home = ({ id_curso, id_alumno }) => {
   const [publications, setPublications] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +25,7 @@ const Home = ({ id_curso, id_alumno }) => {
     if (!hasMore || loading) return;
     
     try {
-      const response = await fetch('http://localhost:3000/search_all_publications', {
+      const response = await fetch(`${serverURL}/search_all_publications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

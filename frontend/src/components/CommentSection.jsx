@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../scss/CommentSection.scss';
 import Loading from '../components/Loading';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -9,7 +11,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
 
     const fetchComments = () => {
         setLoading(true)
-        fetch('http://localhost:3000/get_comments', {
+        fetch(`${serverURL}/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id_publicacion: data.id })
@@ -30,7 +32,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:3000/get_comments', {
+        fetch(`${serverURL}/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id_publicacion: data.id })
@@ -49,7 +51,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
         if (!comentario.trim()) return;
 
         try {
-            const response = await fetch('http://localhost:3000/insert_comment', {
+            const response = await fetch(`${serverURL}/insert_comment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

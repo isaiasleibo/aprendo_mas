@@ -8,6 +8,8 @@ import Loading from "../components/Loading";
 import Empty from "../components/Empty";
 import { Link } from "react-router-dom";
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const MisMaterias = ({ id }) => {
   const [materias, setMaterias] = useState([])
   const [isFetched, setIsFetched] = useState(false)
@@ -15,7 +17,7 @@ const MisMaterias = ({ id }) => {
 
   const checkSubjects = async () => {
     try {
-      const response = await fetch('http://localhost:3000/search_subjects', {
+      const response = await fetch(`${serverURL}/search_subjects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -3,6 +3,8 @@ import '../scss/Login.scss';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const Login = ({ setUser }) => {
     const [document, setDocument] = useState('');
     const [password, setPassword] = useState('');
@@ -18,7 +20,7 @@ const Login = ({ setUser }) => {
         const loginData = { usuario: doc, contrasena: pass };
     
         try {
-            const response = await fetch("http://localhost:3000/check_student", {
+            const response = await fetch(`${serverURL}/check_student`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

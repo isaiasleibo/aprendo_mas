@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import '../scss/Mensajes.scss';
 import Loading from '../components/Loading';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const Mensajes = ({ id }) => {
   const [activeChat, setActiveChat] = useState(null); // Estado para el chat activo
   const [chats, setChats] = useState()
@@ -14,7 +16,7 @@ const Mensajes = ({ id }) => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_chats", {
+      const response = await fetch(`${serverURL}/get_chats`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +47,7 @@ const Mensajes = ({ id }) => {
     setChatLoading(true)
 
     try {
-      const response = await fetch("http://localhost:3000/get_messages", {
+      const response = await fetch(`${serverURL}/get_messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

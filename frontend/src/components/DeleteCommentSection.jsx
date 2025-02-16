@@ -1,6 +1,8 @@
 import React from 'react';
 import '../scss/DeleteCommentSection.scss';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const DeleteCommentSection = ({ deleteComment, data, comment }) => {
 
     const handleDelete = async () => {
@@ -10,7 +12,7 @@ const DeleteCommentSection = ({ deleteComment, data, comment }) => {
         }
 
         try {
-            const response = await fetch("http://localhost:3000/delete_comment", {
+            const response = await fetch(`${serverURL}/delete_comment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

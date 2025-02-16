@@ -12,6 +12,8 @@ import './App.scss'
 import Loading from './components/Loading'
 import SubjectHome from './pages/SubjectHome'
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const App = () => {
   const [user, setUser] = useState();
   const [course, setCourse] = useState(null);
@@ -27,7 +29,7 @@ const App = () => {
     const loginData = { usuario: doc, contrasena: pass };
 
     try {
-      const response = await fetch("http://localhost:3000/check_student", {
+      const response = await fetch(`${serverURL}/check_student`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +68,7 @@ const App = () => {
   const checkCourse = useCallback(async () => {
     if (user) {
       try {
-        const response = await fetch('http://localhost:3000/search_course', {
+        const response = await fetch(`${serverURL}/search_course`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

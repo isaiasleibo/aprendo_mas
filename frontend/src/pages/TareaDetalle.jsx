@@ -8,6 +8,8 @@ import Loading from '../components/Loading'
 import Error404 from '../pages/Error404'
 import DeleteTaskComment from '../components/DeleteTaskComment';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const TareaDetalle = ({ course, id_alumno }) => {
   const { id_tarea } = useParams();
   const [publication, setPublication] = useState(null);
@@ -23,7 +25,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
 
   const fetchPublicacion = async () => {
     try {
-      const response = await fetch('http://localhost:3000/search_specific_task', {
+      const response = await fetch(`${serverURL}/search_specific_task`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -49,7 +51,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
 
   async function getComments() {
     try {
-      const response = await fetch('http://localhost:3000/get_comments', {
+      const response = await fetch(`${serverURL}/get_comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_publicacion: id_tarea })
@@ -70,7 +72,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
     if (!comentario.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:3000/insert_comment', {
+      const response = await fetch(`${serverURL}/insert_comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -91,7 +93,6 @@ const TareaDetalle = ({ course, id_alumno }) => {
   };
 
   const handleEnviarRespuesta = () => {
-    const respuesta = editorRef.current?.getEditorValue();
     // Aquí puedes realizar un POST al backend para guardar la respuesta
   };
 

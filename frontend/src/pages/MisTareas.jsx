@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import Empty from '../components/Empty';
 
+const serverURL = process.env.REACT_APP_SERVER_URL
+
 const MisTareas = ({ id_curso, id_alumno }) => {
     const [tareas, setTareas] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ const MisTareas = ({ id_curso, id_alumno }) => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/search_tasks', {
+            const response = await fetch(`${serverURL}/search_tasks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id_alumno, id_curso, page, limit: 10 }),

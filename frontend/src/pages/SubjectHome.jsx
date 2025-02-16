@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import PublicationItem from '../components/PublicationItem';
 import '../scss/Home.scss';
@@ -9,6 +9,8 @@ import Empty from '../components/Empty';
 import DeleteCommentSection from '../components/DeleteCommentSection';
 import { useParams } from 'react-router-dom';
 import Error404 from './Error404';
+
+const serverURL = process.env.REACT_APP_SERVER_URL
 
 const SubjectHome = ({ id_alumno, id_curso }) => {
 const { id_materia } = useParams();
@@ -30,7 +32,7 @@ const { id_materia } = useParams();
     setError(false)
     
     try {
-      const response = await fetch('http://localhost:3000/search_publications_by_subject', {
+      const response = await fetch(`${serverURL}/search_publications_by_subject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ const { id_materia } = useParams();
 
   const fetchMateria = async () => {
     try {
-        const response = await fetch("http://localhost:3000/fetch_subject", {
+        const response = await fetch(`${serverURL}/fetch_subject`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
