@@ -11,6 +11,7 @@ import TareaDetalle from './pages/TareaDetalle'
 import './App.scss'
 import Loading from './components/Loading'
 import SubjectHome from './pages/SubjectHome'
+import Calificaciones from './pages/Calificaciones'
 
 const serverURL = process.env.REACT_APP_SERVER_URL
 
@@ -108,6 +109,7 @@ const App = () => {
         <Route path='/mensajes' element={<Mensajes id={user.id_alumno} />} />
         <Route path='/tareas/:id_tarea' element={<TareaDetalle course={course} id_alumno={user.id_alumno} />} />
         <Route path='/materia/:id_materia' element={<SubjectHome id_alumno={user.id_alumno} id_curso={course.id_curso} />} />
+        <Route path='/calificaciones' element={<Calificaciones id={user.id_alumno} />} />
         <Route path='*' element={<Error404 />} />
       </>
       ) : (

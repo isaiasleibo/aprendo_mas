@@ -31,6 +31,7 @@ const searchCourse = loadFunction("./functions/search_course");
 const searchPublicationsBySubject = loadFunction("./functions/search_publications_by_subject");
 const searchSpecificTask = loadFunction("./functions/search_specific_task");
 const searchSubjects = loadFunction("./functions/search_subjects");
+const searchSubjectsWithScore = loadFunction("./functions/search_subjects_with_score");
 const searchTasksByDate = loadFunction("./functions/search_tasks_by_date");
 const searchTasks = loadFunction("./functions/search_tasks");
 
@@ -48,6 +49,7 @@ if (searchCourse) app.all("/search_course", searchCourse);
 if (searchPublicationsBySubject) app.all("/search_publications_by_subject", searchPublicationsBySubject);
 if (searchSpecificTask) app.all("/search_specific_task", searchSpecificTask);
 if (searchSubjects) app.all("/search_subjects", searchSubjects);
+if (searchSubjectsWithScore) app.all("/search_subjects_with_score", searchSubjectsWithScore);
 if (searchTasksByDate) app.all("/search_tasks_by_date", searchTasksByDate);
 if (searchTasks) app.all("/search_tasks", searchTasks);
 
