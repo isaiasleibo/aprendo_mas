@@ -104,11 +104,9 @@
         grid-template-columns: 25px 1fr;
 
         p {
-            padding-left: 10px;
             margin-left: 10px;
             font-size: 18px;
             transition: color 0.5s, transform 0.5s;
-            border-left: 1px solid #383838;
         }
 
         &:hover {
@@ -118,7 +116,6 @@
 
             p {
                 color: #0066c5;
-                border-left: 1px solid #0066c5;
             }
         }
 
@@ -135,7 +132,6 @@
 
         p {
             color: #a87309;
-            border-left: 1px solid #a87309;
         }
     }
 }

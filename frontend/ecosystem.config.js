@@ -2,7 +2,7 @@ module.exports = {
     apps: [
       {
         name: "aprendo_mas_frontend",
-        script: "serve -s build -l 3001", // Agregamos el flag -l 3000 para especificar el puerto
+        script: "serve -s build -l 3001", 
         watch: ["build"], 
       },
       {

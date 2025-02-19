@@ -2,12 +2,12 @@ module.exports = {
     apps: [
       {
         name: "aprendo_mas_backend",
-        script: "server.js", // Archivo principal del backend
-        watch: true, // Detecta cambios en los archivos y reinicia el servidor
-        ignore_watch: ["node_modules", "logs"], // Evita reinicios innecesarios
+        script: "server.js", 
+        watch: true, 
+        ignore_watch: ["node_modules", "logs"], 
         env: {
           NODE_ENV: "production",
-          PORT: 3000 // Asegura que el backend use el puerto 3000
+          PORT: 3000 
         }
       }
     ]
