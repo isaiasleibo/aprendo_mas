@@ -18,8 +18,7 @@
 --
 -- Current Database: `aprendo_mas`
 --
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `aprendo_mas` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
+/*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 
 USE `aprendo_mas`;
 
