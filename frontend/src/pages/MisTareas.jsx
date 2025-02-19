@@ -25,7 +25,7 @@ const MisTareas = ({ id_curso, id_alumno }) => {
         };
 
         try {
-            const response = await fetch(`${serverURL}/search_tasks`, {
+            const response = await fetch(`${serverURL}/main/search_tasks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id_alumno, id_curso, page, limit: 10, api_key: serverApiKey }),

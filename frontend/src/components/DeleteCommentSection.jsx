@@ -13,7 +13,7 @@ const DeleteCommentSection = ({ deleteComment, data, comment }) => {
         }
 
         try {
-            const response = await fetch(`${serverURL}/delete_comment`, {
+            const response = await fetch(`${serverURL}/main/delete_comment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const MisMaterias = ({ id }) => {
 
   const checkSubjects = async () => {
     try {
-      const response = await fetch(`${serverURL}/search_subjects`, {
+      const response = await fetch(`${serverURL}/main/search_subjects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -31,7 +31,7 @@ const App = () => {
     const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
 
     try {
-      const response = await fetch(`${serverURL}/check_student`, {
+      const response = await fetch(`${serverURL}/main/check_student`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const App = () => {
   const checkCourse = useCallback(async () => {
     if (user) {
       try {
-        const response = await fetch(`${serverURL}/search_course`, {
+        const response = await fetch(`${serverURL}/main/search_course`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

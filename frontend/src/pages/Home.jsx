@@ -26,7 +26,7 @@ const Home = ({ id_curso, id_alumno }) => {
     if (!hasMore || loading) return;
     
     try {
-      const response = await fetch(`${serverURL}/search_all_publications`, {
+      const response = await fetch(`${serverURL}/main/search_all_publications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

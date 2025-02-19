@@ -57,7 +57,7 @@ const PublicationItem = ({ id, itemType, teacherName, profilePhoto, subjectName,
 
   const obtenerCantidadComentarios = async () => {
     try {
-      const response = await fetch(`${serverURL}/count_comments`, {
+      const response = await fetch(`${serverURL}/main/count_comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -27,39 +27,44 @@ const loadFunction = (path) => {
 };
 
 // Importar y validar funciones
-const checkStudent = loadFunction("./functions/check_student");
-const countComments = loadFunction("./functions/count_comments");
-const deleteComment = loadFunction("./functions/delete_comment");
-const fetchSubject = loadFunction("./functions/fetch_subject");
-const getChats = loadFunction("./functions/get_chats");
-const getComments = loadFunction("./functions/get_comments");
-const getMessages = loadFunction("./functions/get_messages");
-const insertComment = loadFunction("./functions/insert_comment");
-const searchAllPublications = loadFunction("./functions/search_all_publications");
-const searchCourse = loadFunction("./functions/search_course");
-const searchPublicationsBySubject = loadFunction("./functions/search_publications_by_subject");
-const searchSpecificTask = loadFunction("./functions/search_specific_task");
-const searchSubjects = loadFunction("./functions/search_subjects");
-const searchSubjectsWithScore = loadFunction("./functions/search_subjects_with_score");
-const searchTasksByDate = loadFunction("./functions/search_tasks_by_date");
-const searchTasks = loadFunction("./functions/search_tasks");
+const checkStudent = loadFunction("./functions/main/check_student");
+const countComments = loadFunction("./functions/main/count_comments");
+const deleteComment = loadFunction("./functions/main/delete_comment");
+const fetchSubject = loadFunction("./functions/main/fetch_subject");
+const getChats = loadFunction("./functions/main/get_chats");
+const getComments = loadFunction("./functions/main/get_comments");
+const getMessages = loadFunction("./functions/main/get_messages");
+const insertComment = loadFunction("./functions/main/insert_comment");
+const searchAllPublications = loadFunction("./functions/main/search_all_publications");
+const searchCourse = loadFunction("./functions/main/search_course");
+const searchPublicationsBySubject = loadFunction("./functions/main/search_publications_by_subject");
+const searchSpecificTask = loadFunction("./functions/main/search_specific_task");
+const searchSubjects = loadFunction("./functions/main/search_subjects");
+const searchSubjectsWithScore = loadFunction("./functions/main/search_subjects_with_score");
+const searchTasksByDate = loadFunction("./functions/main/search_tasks_by_date");
+const searchTasks = loadFunction("./functions/main/search_tasks");
 
-// Rutas para aceptar cualquier método HTTP si la función fue importada correctamente
-if (checkStudent) app.all("/check_student", checkStudent);
-if (countComments) app.all("/count_comments", countComments);
-if (deleteComment) app.all("/delete_comment", deleteComment);
-if (fetchSubject) app.all("/fetch_subject", fetchSubject);
-if (getChats) app.all("/get_chats", getChats);
-if (getComments) app.all("/get_comments", getComments);
-if (getMessages) app.all("/get_messages", getMessages);
-if (insertComment) app.all("/insert_comment", insertComment);
-if (searchAllPublications) app.all("/search_all_publications", searchAllPublications);
-if (searchCourse) app.all("/search_course", searchCourse);
-if (searchPublicationsBySubject) app.all("/search_publications_by_subject", searchPublicationsBySubject);
-if (searchSpecificTask) app.all("/search_specific_task", searchSpecificTask);
-if (searchSubjects) app.all("/search_subjects", searchSubjects);
-if (searchSubjectsWithScore) app.all("/search_subjects_with_score", searchSubjectsWithScore);
-if (searchTasksByDate) app.all("/search_tasks_by_date", searchTasksByDate);
-if (searchTasks) app.all("/search_tasks", searchTasks);
+const getUser = loadFunction("./functions/profesores/get_user");
+
+// Main
+if (checkStudent) app.all("/main/check_student", checkStudent);
+if (countComments) app.all("/main/count_comments", countComments);
+if (deleteComment) app.all("/main/delete_comment", deleteComment);
+if (fetchSubject) app.all("/main/fetch_subject", fetchSubject);
+if (getChats) app.all("/main/get_chats", getChats);
+if (getComments) app.all("/main/get_comments", getComments);
+if (getMessages) app.all("/main/get_messages", getMessages);
+if (insertComment) app.all("/main/insert_comment", insertComment);
+if (searchAllPublications) app.all("/main/search_all_publications", searchAllPublications);
+if (searchCourse) app.all("/main/search_course", searchCourse);
+if (searchPublicationsBySubject) app.all("/main/search_publications_by_subject", searchPublicationsBySubject);
+if (searchSpecificTask) app.all("/main/search_specific_task", searchSpecificTask);
+if (searchSubjects) app.all("/main/search_subjects", searchSubjects);
+if (searchSubjectsWithScore) app.all("/main/search_subjects_with_score", searchSubjectsWithScore);
+if (searchTasksByDate) app.all("/main/search_tasks_by_date", searchTasksByDate);
+if (searchTasks) app.all("/main/search_tasks", searchTasks);
+
+// Profesores
+if (getUser) app.all("/profesores/get_user", getUser);
 
 app.listen(3000, () => console.log("🚀 Servidor corriendo en http://localhost:3000"));

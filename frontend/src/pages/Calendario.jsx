@@ -27,7 +27,7 @@ const Calendario = ({ id_curso, id_alumno }) => {
       const lastDay = new Date(year, month + 1, 0).toISOString().split('T')[0]; // Último día del mes
 
       try {
-        const response = await fetch(`${serverURL}/search_tasks_by_date`, {
+        const response = await fetch(`${serverURL}/main/search_tasks_by_date`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

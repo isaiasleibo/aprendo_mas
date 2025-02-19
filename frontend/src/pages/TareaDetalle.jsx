@@ -26,7 +26,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
 
   const fetchPublicacion = async () => {
     try {
-      const response = await fetch(`${serverURL}/search_specific_task`, {
+      const response = await fetch(`${serverURL}/main/search_specific_task`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -53,7 +53,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
 
   async function getComments() {
     try {
-      const response = await fetch(`${serverURL}/get_comments`, {
+      const response = await fetch(`${serverURL}/main/get_comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_publicacion: id_tarea, api_key: serverApiKey })
@@ -74,7 +74,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
     if (!comentario.trim()) return;
 
     try {
-      const response = await fetch(`${serverURL}/insert_comment`, {
+      const response = await fetch(`${serverURL}/main/insert_comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

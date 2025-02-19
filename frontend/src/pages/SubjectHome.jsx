@@ -33,7 +33,7 @@ const { id_materia } = useParams();
     setError(false)
     
     try {
-      const response = await fetch(`${serverURL}/search_publications_by_subject`, {
+      const response = await fetch(`${serverURL}/main/search_publications_by_subject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const { id_materia } = useParams();
 
   const fetchMateria = async () => {
     try {
-        const response = await fetch(`${serverURL}/fetch_subject`, {
+        const response = await fetch(`${serverURL}/main/fetch_subject`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

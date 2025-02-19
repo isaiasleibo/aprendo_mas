@@ -1,0 +1,85 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+
+    .login-form-loading {
+        width: fit-content !important;
+    }
+
+    .login-form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: rgba(179, 179, 179, 0.459) 0px 7px 29px 0px;
+        border: 1px solid #b3b3b3;
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #error {
+            color: red;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+    
+        img {
+            height: 150px;
+            padding-bottom: 30px;
+            filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .login-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: rgba(179, 179, 179, 0.3) 0px 7px 29px 0px;
+        }
+        
+        input#document {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+
+
+.login-button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #213555;
+    border: 1px solid #b3b3b3;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(179, 179, 179, 0.459) 0px 7px 29px 0px;
+}
+
+.login-button:hover {
+    background-color: #344f7a;
+}
+
+#forgot-password {
+    width: 100%;
+    font-size: 12px;
+    text-align: right;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}

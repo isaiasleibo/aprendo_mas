@@ -12,7 +12,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
 
     const fetchComments = () => {
         setLoading(true)
-        fetch(`${serverURL}/get_comments`, {
+        fetch(`${serverURL}/main/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id_publicacion: data.id, api_key: serverApiKey })
@@ -33,7 +33,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${serverURL}/get_comments`, {
+        fetch(`${serverURL}/main/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id_publicacion: data.id, api_key: serverApiKey })
@@ -52,7 +52,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
         if (!comentario.trim()) return;
 
         try {
-            const response = await fetch(`${serverURL}/insert_comment`, {
+            const response = await fetch(`${serverURL}/main/insert_comment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

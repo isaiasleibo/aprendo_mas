@@ -17,7 +17,7 @@ const Mensajes = ({ id }) => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch(`${serverURL}/get_chats`, {
+      const response = await fetch(`${serverURL}/main/get_chats`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Mensajes = ({ id }) => {
     setChatLoading(true)
 
     try {
-      const response = await fetch(`${serverURL}/get_messages`, {
+      const response = await fetch(`${serverURL}/main/get_messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

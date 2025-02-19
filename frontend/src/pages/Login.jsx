@@ -21,7 +21,7 @@ const Login = ({ setUser }) => {
         const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
     
         try {
-            const response = await fetch(`${serverURL}/check_student`, {
+            const response = await fetch(`${serverURL}/main/check_student`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

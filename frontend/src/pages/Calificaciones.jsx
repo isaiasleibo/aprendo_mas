@@ -16,7 +16,7 @@ const Calificaciones = ({ id }) => {
 
   const checkSubjects = async () => {
     try {
-      const response = await fetch(`${serverURL}/search_subjects_with_score`, {
+      const response = await fetch(`${serverURL}/main/search_subjects_with_score`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
