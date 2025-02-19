@@ -3,6 +3,7 @@ import '../scss/CommentSection.scss';
 import Loading from '../components/Loading';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
     const [comments, setComments] = useState([]);
@@ -14,7 +15,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
         fetch(`${serverURL}/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id_publicacion: data.id })
+            body: JSON.stringify({ id_publicacion: data.id, api_key: serverApiKey })
         })
             .then(response => response.json())
             .then(comments => {
@@ -35,7 +36,7 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
         fetch(`${serverURL}/get_comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id_publicacion: data.id })
+            body: JSON.stringify({ id_publicacion: data.id, api_key: serverApiKey })
         })
             .then(response => response.json())
             .then(comments => { setComments(comments.length === 0 ? [] : comments); data.obtenerCantidadComentarios() })
@@ -57,7 +58,8 @@ const CommentSection = ({ data, comment, id_alumno, deleteComment }) => {
                 body: JSON.stringify({
                     id_publicacion: data.id,
                     comentario,
-                    id_alumno
+                    id_alumno, 
+                    api_key: serverApiKey
                 })
             });
 

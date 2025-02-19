@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const Login = ({ setUser }) => {
     const [document, setDocument] = useState('');
@@ -17,7 +18,7 @@ const Login = ({ setUser }) => {
         if (e) e.preventDefault();
         setMensaje('');
     
-        const loginData = { usuario: doc, contrasena: pass };
+        const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
     
         try {
             const response = await fetch(`${serverURL}/check_student`, {

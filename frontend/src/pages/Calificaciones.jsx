@@ -7,6 +7,7 @@ import Empty from "../components/Empty";
 import { Link } from "react-router-dom";
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const Calificaciones = ({ id }) => {
   const [materias, setMaterias] = useState([]);
@@ -20,13 +21,12 @@ const Calificaciones = ({ id }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id: id })
+        body: JSON.stringify({ id, api_key: serverApiKey })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data)
         setMaterias(data)
         setIsFetched(true)
       } else {
@@ -60,7 +60,7 @@ const Calificaciones = ({ id }) => {
                     <h3>{materia.nombre_materia}</h3>
                     <span>{materia.nombre_curso}</span>
                   </div>
-                  <div className="promedio">Promedio: {Math.round(materia.promedio_nota * 100) / 100}</div>
+                  <div className={`promedio ${(Math.round(materia.promedio_nota * 100) / 100) >= 6 ? 'aprobado' : 'desaprobado'}`}>{Math.round(materia.promedio_nota * 100) / 100}</div>
                 </div>
               </Link>
             ))}

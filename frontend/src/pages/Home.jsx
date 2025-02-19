@@ -9,6 +9,7 @@ import Empty from '../components/Empty'
 import DeleteCommentSection from '../components/DeleteCommentSection';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const Home = ({ id_curso, id_alumno }) => {
   const [publications, setPublications] = useState([]);
@@ -30,7 +31,7 @@ const Home = ({ id_curso, id_alumno }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id_alumno, id_curso, page, limit: 10 }),
+        body: JSON.stringify({ id_alumno, id_curso, page, limit: 10, api_key: serverApiKey }),
       });
 
       if (!response.ok) {

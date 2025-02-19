@@ -9,6 +9,7 @@ import Empty from "../components/Empty";
 import { Link } from "react-router-dom";
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const MisMaterias = ({ id }) => {
   const [materias, setMaterias] = useState([])
@@ -22,7 +23,7 @@ const MisMaterias = ({ id }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id: id })
+        body: JSON.stringify({ id, api_key: serverApiKey })
       });
 
       const data = await response.json();

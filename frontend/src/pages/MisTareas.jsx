@@ -7,6 +7,7 @@ import Loading from '../components/Loading';
 import Empty from '../components/Empty';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const MisTareas = ({ id_curso, id_alumno }) => {
     const [tareas, setTareas] = useState([]);
@@ -27,7 +28,7 @@ const MisTareas = ({ id_curso, id_alumno }) => {
             const response = await fetch(`${serverURL}/search_tasks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id_alumno, id_curso, page, limit: 10 }),
+                body: JSON.stringify({ id_alumno, id_curso, page, limit: 10, api_key: serverApiKey }),
             });
 
             if (!response.ok) throw new Error('Error al cargar las tareas');

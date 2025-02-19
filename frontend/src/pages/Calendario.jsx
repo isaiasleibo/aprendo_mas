@@ -6,6 +6,7 @@ import Loading from '../components/Loading'
 import { Link } from 'react-router-dom';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const Calendario = ({ id_curso, id_alumno }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -36,6 +37,7 @@ const Calendario = ({ id_curso, id_alumno }) => {
             id_alumno,
             startDate: firstDay,
             endDate: lastDay,
+            api_key: serverApiKey
           }),
         });
 

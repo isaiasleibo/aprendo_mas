@@ -2,6 +2,7 @@ import React from 'react';
 import '../scss/DeleteCommentSection.scss';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const DeleteCommentSection = ({ deleteComment, data, comment }) => {
 
@@ -20,6 +21,7 @@ const DeleteCommentSection = ({ deleteComment, data, comment }) => {
                 body: JSON.stringify({
                     id_alumno: data.id_alumno,
                     id_comentario: data.id_comentario,
+                    api_key: serverApiKey
                 }),
             });
 

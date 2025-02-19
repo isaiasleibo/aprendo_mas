@@ -9,6 +9,7 @@ import Error404 from '../pages/Error404'
 import DeleteTaskComment from '../components/DeleteTaskComment';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const TareaDetalle = ({ course, id_alumno }) => {
   const { id_tarea } = useParams();
@@ -30,7 +31,8 @@ const TareaDetalle = ({ course, id_alumno }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id_publicacion: id_tarea,
-          id_curso: course.id_curso
+          id_curso: course.id_curso,
+          api_key: serverApiKey
         })
       });
 
@@ -54,7 +56,7 @@ const TareaDetalle = ({ course, id_alumno }) => {
       const response = await fetch(`${serverURL}/get_comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_publicacion: id_tarea })
+        body: JSON.stringify({ id_publicacion: id_tarea, api_key: serverApiKey })
       });
 
       const comments = await response.json();
@@ -78,7 +80,8 @@ const TareaDetalle = ({ course, id_alumno }) => {
         body: JSON.stringify({
           id_publicacion: id_tarea,
           comentario,
-          id_alumno
+          id_alumno,
+          api_key: serverApiKey
         })
       });
 

@@ -35,6 +35,25 @@
       &:hover {
         background-color: #f0f8ff;
       }
+
+      .promedio {
+        color: black;
+        width: 40px;
+        padding: 5px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &.aprobado {
+          background-color: rgba(0, 201, 0, 0.75);
+          border: 1px solid rgb(0, 201, 0);
+        }
+
+        &.desaprobado {
+          background-color: rgba(255, 0, 0, 0.75);
+          border: 1px solid rgb(255, 0, 0);
+        }
+      }
   
       .materia-info {
         h3 {

@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import Error404 from './Error404';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const SubjectHome = ({ id_alumno, id_curso }) => {
 const { id_materia } = useParams();
@@ -37,7 +38,7 @@ const { id_materia } = useParams();
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id_alumno, id_curso, id_materia, page, limit: 10 }),
+        body: JSON.stringify({ id_alumno, id_curso, id_materia, page, limit: 10, api_key: serverApiKey }),
       });
 
       if (!response.ok) {
@@ -65,7 +66,7 @@ const { id_materia } = useParams();
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ id_materia, id_curso }),
+            body: JSON.stringify({ id_materia, id_curso, api_key: serverApiKey }),
         });
 
         if (!response.ok) {

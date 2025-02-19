@@ -14,6 +14,7 @@ import SubjectHome from './pages/SubjectHome'
 import Calificaciones from './pages/Calificaciones'
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const App = () => {
   const [user, setUser] = useState();
@@ -27,7 +28,7 @@ const App = () => {
   const handleLogin = async (e, doc, pass) => {
     if (e) e.preventDefault();
 
-    const loginData = { usuario: doc, contrasena: pass };
+    const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
 
     try {
       const response = await fetch(`${serverURL}/check_student`, {
@@ -74,7 +75,7 @@ const App = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id: user.id_alumno })
+          body: JSON.stringify({ id: user.id_alumno, api_key: serverApiKey })
         });
 
         const data = await response.json();

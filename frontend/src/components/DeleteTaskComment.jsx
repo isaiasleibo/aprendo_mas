@@ -1,6 +1,7 @@
 import React from 'react'
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const DeleteTaskComment = ({id_alumno, id_comentario, setComment, getComments}) => {
 
@@ -14,6 +15,7 @@ const DeleteTaskComment = ({id_alumno, id_comentario, setComment, getComments}) 
                 body: JSON.stringify({
                     id_alumno,
                     id_comentario,
+                    api_key: serverApiKey
                 }),
             });
 

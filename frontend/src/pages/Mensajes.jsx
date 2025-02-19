@@ -5,6 +5,7 @@ import '../scss/Mensajes.scss';
 import Loading from '../components/Loading';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const Mensajes = ({ id }) => {
   const [activeChat, setActiveChat] = useState(null); // Estado para el chat activo
@@ -21,7 +22,7 @@ const Mensajes = ({ id }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: id }), // Enviar userId en el cuerpo
+        body: JSON.stringify({ id, api_key: serverApiKey }), // Enviar userId en el cuerpo
       });
 
       if (!response.ok) {
@@ -52,7 +53,7 @@ const Mensajes = ({ id }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id1, id2 }), // Enviar los IDs en el cuerpo
+        body: JSON.stringify({ id1, id2, api_key: serverApiKey }), // Enviar los IDs en el cuerpo
       });
 
       if (!response.ok) {

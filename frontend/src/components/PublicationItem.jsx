@@ -5,6 +5,7 @@ import { faComment, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
+const serverApiKey = process.env.REACT_APP_API_KEY
 
 const PublicationItem = ({ id, itemType, teacherName, profilePhoto, subjectName, courseName, content, datePublished, taskTitle, comment }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -61,7 +62,7 @@ const PublicationItem = ({ id, itemType, teacherName, profilePhoto, subjectName,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id_publicacion: id }),
+        body: JSON.stringify({ id_publicacion: id, api_key: serverApiKey }),
       });
   
       if (!response.ok) {

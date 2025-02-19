@@ -6,6 +6,15 @@ const app = express();
 app.use(cors()); // Habilita CORS para todas las rutas
 app.use(express.json()); // Middleware para parsear JSON
 
+// Middleware para validar API_KEY desde la petición
+app.use((req, res, next) => {
+    const apiKey = req.headers["api_key"] || req.query.api_key || req.body.api_key;
+    if (apiKey !== process.env.API_KEY) {
+        return res.status(403).json({ error: "API Key inválida" });
+    }
+    next();
+});
+
 // Función auxiliar para cargar módulos y validar que sean funciones
 const loadFunction = (path) => {
     const func = require(path);
