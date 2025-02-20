@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import '../scss/Login.scss';
+import '../../scss/Login.scss';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../components/Loading';
-import { Link } from 'react-router-dom';
+import Loading from '../../components/Loading';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
 const serverApiKey = process.env.REACT_APP_API_KEY
 
-const Login = ({ setUser }) => {
+const ProfesoresLogin = ({ setUser }) => {
     const [document, setDocument] = useState('');
     const [password, setPassword] = useState('');
     const [mensaje, setMensaje] = useState('');
@@ -18,24 +17,25 @@ const Login = ({ setUser }) => {
         setLoading(true);
         if (e) e.preventDefault();
         setMensaje('');
-
+    
         const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
-
+    
         try {
-            const response = await fetch(`${serverURL}/main/check_student`, {
+            const response = await fetch(`${serverURL}/profesores/get_user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(loginData),
             });
-
+    
             const data = await response.json();
-
+    
             if (data.usuario) {
+                console.log(data)
                 setUser(data);
-                localStorage.setItem('usuario', data.usuario);
-                localStorage.setItem('contraseña', data.contrasena);
+                localStorage.setItem('profesores_usuario', data.usuario);
+                localStorage.setItem('profesores_contraseña', data.contrasena);
                 navigate("/");
             } else {
                 setMensaje("Datos incorrectos.");
@@ -55,7 +55,7 @@ const Login = ({ setUser }) => {
                 {
                     !loading ? (
                         <>
-                            <img src={require('../img/big-logo.webp')} alt="" />
+                            <img src={require('../../img/big-logo.webp')} alt="" />
                             <h2 className="login-title">Iniciar Sesión</h2>
                             <input
                                 type="text"
@@ -74,12 +74,6 @@ const Login = ({ setUser }) => {
                             <p id='forgot-password'>¿Olvidó su contraseña?</p>
                             <button type="submit" className="login-button">Ingresar</button>
                             <p id="error">{mensaje}</p>
-
-                            <div id="sections">
-                                <Link to="/profesores/login">
-                                    Ir al panel de profesores
-                                </Link>
-                            </div>
                         </>
                     ) : (<Loading />)
                 }
@@ -89,4 +83,4 @@ const Login = ({ setUser }) => {
     );
 };
 
-export default Login;
+export default ProfesoresLogin;

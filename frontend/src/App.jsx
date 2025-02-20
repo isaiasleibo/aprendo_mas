@@ -13,6 +13,8 @@ import Loading from './components/Loading'
 import SubjectHome from './pages/SubjectHome'
 import Calificaciones from './pages/Calificaciones'
 
+import ProfesoresLogin from './pages/profesores/ProfesoresLogin'
+
 const serverURL = process.env.REACT_APP_SERVER_URL
 const serverApiKey = process.env.REACT_APP_API_KEY
 
@@ -24,6 +26,8 @@ const App = () => {
   const [hasAutoLogged, setHasAutoLogged] = useState(false);
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
+
+  const [profesoresUser, setProfesoresUser] = useState(null)
 
   const handleLogin = async (e, doc, pass) => {
     if (e) e.preventDefault();
@@ -65,7 +69,7 @@ const App = () => {
       navigate("/login")
     }
   }, [savedPassword, savedUser, hasAutoLogged]);
-  
+
 
   const checkCourse = useCallback(async () => {
     if (user) {
@@ -101,25 +105,37 @@ const App = () => {
   return (
     !loading ? (
       <Routes>
-      {user && course ? (<>
-        <Route path="/login" element={<Navigate to="/" />} />
-        <Route path='/' element={<Home id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
-        <Route path='/materias' element={<MisMaterias id={user.id_alumno} />} />
-        <Route path='/tareas' element={<MisTareas id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
-        <Route path='/calendario' element={<Calendario id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
-        <Route path='/mensajes' element={<Mensajes id={user.id_alumno} />} />
-        <Route path='/tareas/:id_tarea' element={<TareaDetalle course={course} id_alumno={user.id_alumno} />} />
-        <Route path='/materia/:id_materia' element={<SubjectHome id_alumno={user.id_alumno} id_curso={course.id_curso} />} />
-        <Route path='/calificaciones' element={<Calificaciones id={user.id_alumno} />} />
-        <Route path='*' element={<Error404 />} />
-      </>
-      ) : (
-        <>
-          <Route path='/login' element={<Login setUser={setUser} />} />
-          <Route path="/" element={<Navigate to="/login" />} />
+        {user && course ? (<>
+          <Route path="/login" element={<Navigate to="/" />} />
+          <Route path='/' element={<Home id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
+          <Route path='/materias' element={<MisMaterias id={user.id_alumno} />} />
+          <Route path='/tareas' element={<MisTareas id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
+          <Route path='/calendario' element={<Calendario id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
+          <Route path='/mensajes' element={<Mensajes id={user.id_alumno} />} />
+          <Route path='/tareas/:id_tarea' element={<TareaDetalle course={course} id_alumno={user.id_alumno} />} />
+          <Route path='/materia/:id_materia' element={<SubjectHome id_alumno={user.id_alumno} id_curso={course.id_curso} />} />
+          <Route path='/calificaciones' element={<Calificaciones id={user.id_alumno} />} />
+          <Route path='*' element={<Error404 />} />
         </>
-      )}
-    </Routes>
+        ) : (
+          <>
+            <Route path='/login' element={<Login setUser={setUser} />} />
+            <Route path="/" element={<Navigate to="/login" />} />
+          </>
+        )}
+
+        {profesoresUser ? (
+          <>
+
+          </>
+        ) : (
+          <>
+            <Route path='/profesores/login' element={<ProfesoresLogin setUser={setProfesoresUser} />} />
+          </>
+        )
+
+        }
+      </Routes>
     ) : (
       <Loading />
     )
