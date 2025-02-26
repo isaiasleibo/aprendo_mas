@@ -14,6 +14,7 @@ import SubjectHome from './pages/SubjectHome'
 import Calificaciones from './pages/Calificaciones'
 
 import ProfesoresLogin from './pages/profesores/ProfesoresLogin'
+import ProfesoresHome from './pages/profesores/ProfesoresHome'
 
 const serverURL = process.env.REACT_APP_SERVER_URL
 const serverApiKey = process.env.REACT_APP_API_KEY
@@ -23,6 +24,8 @@ const App = () => {
   const [course, setCourse] = useState(null);
   const savedUser = localStorage.getItem('usuario');
   const savedPassword = localStorage.getItem('contraseña');
+  const savedProfesoresUser = localStorage.getItem('profesores_usuario');
+  const savedProfesoresPassword = localStorage.getItem('profesores_contraseña');
   const [hasAutoLogged, setHasAutoLogged] = useState(false);
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
@@ -47,6 +50,38 @@ const App = () => {
 
       if (data.usuario) {
         setUser(data);
+        navigate("/")
+      } else {
+        navigate("/login")
+        console.error("No se pudo iniciar sesión automáticamente. Datos incorrectos o conexión perdida.");
+      }
+    } catch (error) {
+      navigate("/login")
+      console.error("Error al hacer la solicitud:", error);
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  const handleProfesoresLogin = async (e, doc, pass) => {
+    if (e) e.preventDefault();
+
+    const loginData = { usuario: doc, contrasena: pass, api_key: serverApiKey };
+
+    try {
+      const response = await fetch(`${serverURL}/profesores/get_user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      const data = await response.json();
+
+      if (data.usuario) {
+        setProfesoresUser(data);
+        navigate("/")
       } else {
         navigate("/login")
         console.error("No se pudo iniciar sesión automáticamente. Datos incorrectos o conexión perdida.");
@@ -64,6 +99,9 @@ const App = () => {
     if (savedPassword && savedUser && !hasAutoLogged) {
       setHasAutoLogged(true);
       handleLogin(null, savedUser, savedPassword);
+    } else if (savedProfesoresUser && savedProfesoresPassword && !hasAutoLogged) {
+      setHasAutoLogged(true);
+      handleProfesoresLogin(null, savedProfesoresUser, savedProfesoresPassword);
     } else if (!hasAutoLogged) {
       setLoading(false);
       navigate("/login")
@@ -105,7 +143,7 @@ const App = () => {
   return (
     !loading ? (
       <Routes>
-        {user && course ? (<>
+        {user && course && !profesoresUser ? (<>
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path='/' element={<Home id_curso={course.id_curso} id_alumno={user.id_alumno} />} />
           <Route path='/materias' element={<MisMaterias id={user.id_alumno} />} />
@@ -119,18 +157,26 @@ const App = () => {
         </>
         ) : (
           <>
-            <Route path='/login' element={<Login setUser={setUser} />} />
-            <Route path="/" element={<Navigate to="/login" />} />
+            {!profesoresUser && !user && (
+              <>
+                <Route path='/login' element={<Login setUser={setUser} />} />
+                <Route path="/" element={<Navigate to="/login" />} />
+              </>
+            )}
           </>
         )}
 
-        {profesoresUser ? (
+        {profesoresUser && !user ? (
           <>
-
+            <Route path='/' element={<ProfesoresHome />} />
           </>
         ) : (
           <>
-            <Route path='/profesores/login' element={<ProfesoresLogin setUser={setProfesoresUser} />} />
+            {!user && !profesoresUser && (
+              <>
+                <Route path='/profesores/login' element={<ProfesoresLogin setUser={setProfesoresUser} />} />
+              </>
+            )}
           </>
         )
 

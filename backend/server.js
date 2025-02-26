@@ -45,6 +45,7 @@ const searchTasksByDate = loadFunction("./functions/main/search_tasks_by_date");
 const searchTasks = loadFunction("./functions/main/search_tasks");
 
 const getUser = loadFunction("./functions/profesores/get_user");
+const getCourses = loadFunction("./functions/profesores/get_courses");
 
 // Main
 if (checkStudent) app.all("/main/check_student", checkStudent);
@@ -66,5 +67,6 @@ if (searchTasks) app.all("/main/search_tasks", searchTasks);
 
 // Profesores
 if (getUser) app.all("/profesores/get_user", getUser);
+if (getCourses) app.all("/profesores/get_courses", getCourses);
 
 app.listen(3000, () => console.log("🚀 Servidor corriendo en http://localhost:3000"));

@@ -50,6 +50,10 @@ const Login = ({ setUser }) => {
 
     return (
         <div className="login-container">
+            <div id="section-name">
+                <p>Estudiantes</p>
+            </div>
+
             <form className={`login-form ${loading ? 'login-form-loading' : ''}`} onSubmit={(e) => handleLogin(e, document, password)}>
 
                 {

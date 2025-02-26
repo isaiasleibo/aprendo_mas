@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../scss/Login.scss';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading';
+import { Link } from 'react-router-dom';
 
 const serverURL = process.env.REACT_APP_SERVER_URL
 const serverApiKey = process.env.REACT_APP_API_KEY
@@ -50,6 +51,10 @@ const ProfesoresLogin = ({ setUser }) => {
 
     return (
         <div className="login-container">
+            <div id="section-name">
+                <p>Profesores</p>
+            </div>
+
             <form className={`login-form ${loading ? 'login-form-loading' : ''}`} onSubmit={(e) => handleLogin(e, document, password)}>
 
                 {
@@ -74,6 +79,12 @@ const ProfesoresLogin = ({ setUser }) => {
                             <p id='forgot-password'>¿Olvidó su contraseña?</p>
                             <button type="submit" className="login-button">Ingresar</button>
                             <p id="error">{mensaje}</p>
+
+                            <div id="sections">
+                                <Link to="/login">
+                                    Ir al panel de estudiantes
+                                </Link>
+                            </div>
                         </>
                     ) : (<Loading />)
                 }
